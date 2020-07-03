@@ -107,16 +107,10 @@ public class Empresa {
 	
 	// Getters and Setters
 	
-	/**
-	 * @return the cnpj
-	 */
 	public String getCnpj() {
 		return cnpj;
 	}
 
-	/**
-	 * @param cnpj the cnpj to set
-	 */
 	public void setCnpj(String cnpj) {
 		if (cnpj.length() == 18) {
 			this.cnpj = cnpj;
@@ -125,49 +119,30 @@ public class Empresa {
 		}
 	}
 
-	/**
-	 * @return the endereco
-	 */
 	public String getEndereco() {
 		return endereco;
 	}
 
-	/**
-	 * @param endereco the endereco to set
-	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
-	/**
-	 * @return the telefone
-	 */
 	public String getTelefone() {
 		return telefone;
 	}
 
-	/**
-	 * @param telefone the telefone to set
-	 */
 	public void setTelefone(String telefone) {
 		if (telefone.length() > 11 || telefone.length() < 20) {
 			this.telefone = telefone;
 		} else {
 			throw new IllegalArgumentException("O telefone está incorreto. Ex.: 011998420563");
 		}
-
 	}
 
-	/**
-	 * @return the idEmpresa
-	 */
 	public long getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	/**
-	 * @param idEmpresa the idEmpresa to set
-	 */
 	public void setIdEmpresa(long idEmpresa) {
 		if (idEmpresa > 0) {
 			this.idEmpresa = idEmpresa;
