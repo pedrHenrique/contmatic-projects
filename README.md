@@ -1,7 +1,7 @@
 # contmatic-projects
 -> Repositório para publicação de Projetos da Contmatic &lt;-
 
-&lt;Projeto empresav1 <p>
+Projeto empresav1 <p>
   02/07/2020 <br>
   -> Principais classes escritas: Empresa<br>
   -> Classes sendo escritas: Pessoa, Cliente e Funcionario<br>
