@@ -2,23 +2,17 @@ package br.com.contmatic.empresav1.model;
 
 public class Departamento {
 
-	/**
-	 * @param idDepartamento
-	 * @param nome
-	 * @param ramal
-	 */
-
-	public Departamento(long idDepartamento, String nome, int ramal) {
-		setIdDepartamento(idDepartamento);
-		setNome(nome);
-		setRamal(ramal);
-	}
-
 	private long idDepartamento;
 
 	private String nome;
 
 	private int ramal;
+	
+	public Departamento(long idDepartamento, String nome, int ramal) {
+		setIdDepartamento(idDepartamento);
+		setNome(nome);
+		setRamal(ramal);		
+	}
 
 	public void adicionarDep() {
 
@@ -101,7 +95,4 @@ public class Departamento {
 	public String toString() {
 		return "Departamento [idDepartamento=" + idDepartamento + ", nome=" + nome + ", Ramal=" + ramal + "]";
 	}
-	
-	
-
 }
