@@ -17,7 +17,8 @@ import br.com.contmatic.empresav1.model.Pessoa;
 public class Principal {
 	public static void main (String [] args) {
 		
-	/* Métodos de Teste da Classe Empresa	
+	/*
+	 //Métodos de Teste da Classe Empresa	
 		Empresa e = new Empresa();
 		e.registrarEmpresa(1, "TestMatic", "57.695.925/0001-11", "Rua do Mangericao 83", "1145649304");
 		
@@ -30,12 +31,25 @@ public class Principal {
 		Empresa g = new Empresa();
 		g.removerEmpresa(3);
 	*/
+	
+	//Testando Polimorfismo das classes Pessoa/Cliente/Funcionario
 		
-	// Testando Polimorfismo das classes Pessoa/Cliente/Funcionario
-	Pessoa p = new Funcionario(1, "Carlos Alberto", "005.845.669.15", "Teeestando" );
+		Pessoa p = new Funcionario();
+		p.cadastrarPessoa(1, "Carlos Alberto", "005.845.669.15");
+		p.cadastrarPessoa(2, "Rosivaldo", "125.842.612.52");
+		p.cadastrarPessoa(3, "Carlos Alberto", "005.845.669.15");
+		p.cadastrarPessoa(4, "Carlos Alberto", "005.845.669.15");
+		p.cadastrarPessoa(5, "Carlos Alberto", "005.845.669.15");
+		p.solicitarPessoa();
+		
+		p.excluirPessoa(4);
+		//p.excluirPessoa(4);
+		
+		System.out.println("\n\n");
+		Pessoa j = new Funcionario();
+		j.solicitarPessoa();
 
-	p.cadastrarPessoa();
-
+		
 	
 	}
 }

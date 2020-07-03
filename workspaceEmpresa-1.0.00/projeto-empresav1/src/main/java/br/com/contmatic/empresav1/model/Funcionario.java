@@ -1,14 +1,13 @@
 package br.com.contmatic.empresav1.model;
 
 import java.text.DateFormat;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Funcionario extends Pessoa {
-	
-	//Variáveis
-	
+
+	// Variáveis
+
 	private String teste;
 
 	private DateFormat dtAdmissao;
@@ -20,22 +19,71 @@ public class Funcionario extends Pessoa {
 	private double salario;
 
 	private boolean statusFun;
-	
-	private static Collection<Funcionario> funcionarioLista = new HashSet<Funcionario>();
-	
-	//Construtores
 
-	
-	public Funcionario(long idPessoa, String nome, String cpf, String teste/*, DateFormat dtNascimento*/) {
-		super(idPessoa, nome, cpf/*, dtNascimento*/);
+	// Construtores
+
+	public Funcionario(long idPessoa, String nome, String cpf, String teste/* , DateFormat dtNascimento */) {
+		super(idPessoa, nome, cpf/* , dtNascimento */);
 		setTeste(teste);
-		adiciona(this);
 	}
-	
+
 	public Funcionario() {
 		super();
-		
+
 	}
+
+	// Métodos
+
+	@Override
+	public void solicitarPessoa() {
+		getPessoaLista().forEach(System.out::println);
+	}
+
+	@Override
+	public void cadastrarPessoa(long idPessoa, String nome, String cpf) {
+		System.out.println("#### Iniciando Cadastro de Funcionario ### \n");
+
+		Scanner input = new Scanner(System.in);
+		
+		System.out.println("Digite um nome p/ testar: ");
+		String resposta = input.nextLine();
+		setTeste(resposta);
+		new Funcionario(idPessoa, nome, cpf, getTeste());
+	}
+
+	@Override
+	public void excluirPessoa(long id) {
+		// Instânciando Scanner e Iterator
+
+		Scanner input = new Scanner(System.in);
+		Iterator<Pessoa> iterator = getPessoaLista().iterator();
+
+		while (iterator.hasNext()) {
+			Pessoa obj = iterator.next();
+			if (obj.getIdPessoa() == id) {
+				System.out.println("A empresa encontrada foi: " + obj + ". Deseja remove-la? (s/n)");
+				String resposta = input.nextLine();
+				input.close();
+				if (resposta.equalsIgnoreCase("s")) {
+					iterator.remove();
+					System.out.println("A empresa foi removida com sucesso\n");
+					break;
+				} else {
+					System.out.println("Operação Abortada");
+					break;
+				}
+			} else if (iterator.hasNext() == false && obj.getIdPessoa() != id) {
+				extracted(id);
+			}
+		}
+
+	}
+
+	private void extracted(long id) {
+		throw new IllegalArgumentException("A Empresa " + id + " não existe\n");
+	}
+
+	// Getters and Setters
 
 	/**
 	 * Exemplos de Teste
@@ -48,49 +96,13 @@ public class Funcionario extends Pessoa {
 	 * Exemplos de Teste
 	 */
 	public void setTeste(String teste) {
-		this.teste = teste;
-	}
-	
-	
-	// Métodos 
-
-	@Override
-	public void solicitarPessoa() {
-		System.out.println("Exibindo Funcionario - Teste\n");
-		funcionarioLista.forEach(System.out::println);
-	}
-
-	@Override
-	public void cadastrarPessoa() {
-		System.out.println("#### Iniciando Cadastro de Funcionario ### \n\n\n Ainda não Implementado");
-	/*	
-		System.out.println("#### Iniciando Cadastro de Funcionario ###");
-		String resposta = "";
-		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Digite um nome p/ testar");
-		resposta = input.nextLine();
-		setTeste(resposta);
-	*/
-		
-	}
-
-	private void adiciona(Funcionario f) {
-		if (funcionarioLista.contains(f)) {
-			throw new IllegalArgumentException("A Pessoa " + getIdPessoa() + " já possui registro\n");
+		if (teste == "") {
+			throw new IllegalArgumentException("Nome deve ter 5 ou mais caracteres!");
 		} else {
-			funcionarioLista.add(f);
+			this.teste = teste;
 		}
-	}
-	
-	@Override
-	public void excluirPessoa() {
 
 	}
-	
-	
-	// Getters and Setters
-	
 
 	/**
 	 * @return the dtAdmissao
@@ -160,6 +172,16 @@ public class Funcionario extends Pessoa {
 	 */
 	public void setStatusFun(boolean statusFun) {
 		this.statusFun = statusFun;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		// Exemplo de Concatenar
+		// String s = "Pessoa: [idPessoa= " + getIdPessoa() + ", nome= " + getNome() + "
+		// [teste=" + teste + "]" ;
+		// s += super.toString();
+		return "Pessoa: [idPessoa= " + getIdPessoa() + ", nome= " + getNome() + ", cpf= " + getCpf() + " [teste="
+				+ getTeste() + "]";
+	}
 
 }

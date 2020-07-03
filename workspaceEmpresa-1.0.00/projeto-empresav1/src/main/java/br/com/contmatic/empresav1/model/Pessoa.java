@@ -31,7 +31,6 @@ public abstract class Pessoa {
 		setNome(nome);
 		setCpf(cpf);
 		adiciona(this);
-		listaPessoa();
 
 		// this.dtNascimento = dtNascimento;
 	}
@@ -41,37 +40,28 @@ public abstract class Pessoa {
 	}
 
 	// Métodos
-	
-	
+
 	// Método de listagem inicial.
-	public void solicitarPessoa() {
-		System.out.println("Exibindo Pessoa - Teste\n");
-		pessoaLista.forEach(System.out::println);
-	}
-	
-	//Método secundário para testes
-	public static void listaPessoa() {
+	public abstract void solicitarPessoa();
+
+	// Método secundário para testes
+	public void listaPessoa() {
 		System.out.println("Exibindo Pessoas da Classe Pessoa:");
 		for (Pessoa p : pessoaLista) {
 			System.out.println(p);
 		}
 	}
 
-	public void cadastrarPessoa() {
-		throw new UnsupportedOperationException("Not supported yet.");
-		
+	public abstract void cadastrarPessoa(long idPessoa, String nome, String cpf);
 
-	}
-
-	public void excluirPessoa() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
+	public abstract void excluirPessoa(long id);
 
 	private void adiciona(Pessoa p) {
 		if (pessoaLista.contains(p)) {
 			throw new IllegalArgumentException("A Pessoa " + getIdPessoa() + " já possui registro\n");
 		} else {
 			pessoaLista.add(p);
+			System.out.println("Pessoa adicionada com sucesso.\n");
 		}
 	}
 
@@ -175,10 +165,36 @@ public abstract class Pessoa {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Pessoa [idPessoa=" + idPessoa + ", nome=" + nome + ", cpf=" + cpf + "]"
-				+ "Dados de Funcionario: ";
+	/**
+	 * @return the pessoaLista
+	 */
+	public static Collection<Pessoa> getPessoaLista() {
+		return pessoaLista;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (idPessoa ^ (idPessoa >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Pessoa other = (Pessoa) obj;
+		if (idPessoa != other.idPessoa)
+			return false;
+		return true;
+	}
+
+	@Override
+	public abstract String toString();
 
 }

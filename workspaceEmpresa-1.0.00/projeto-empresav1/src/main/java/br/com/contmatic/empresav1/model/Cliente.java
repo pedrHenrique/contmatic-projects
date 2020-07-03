@@ -1,20 +1,16 @@
 package br.com.contmatic.empresav1.model;
 
 import java.text.DateFormat;
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.Scanner;
 
 public class Cliente extends Pessoa {
 
 	// Variáveis
 
+	private static final String msg = "Not yet implemented";
 	private DateFormat dtInscricao;
-
 	private DateFormat ultContato;
-
 	private boolean statusCli;
-
-	private static Collection<Cliente> clienteLista = new HashSet<Cliente>();
 
 	// Construtores
 
@@ -30,18 +26,17 @@ public class Cliente extends Pessoa {
 
 	@Override
 	public void solicitarPessoa() {
-		
+		System.out.print(msg);
 	}
 
 	@Override
-	public void cadastrarPessoa() {
-		System.out.println("#### Iniciando Cadastro de Cliente ### \n\n\n Ainda não Implementado");
-
+	public void cadastrarPessoa(long idPessoa, String nome, String cpf) {
+		System.out.print(msg);
 	}
 
 	@Override
-	public void excluirPessoa() {
-		throw new UnsupportedOperationException("Not supported yet.");
+	public void excluirPessoa(long id) {
+		System.out.print(msg);
 	}
 
 	// Getters and Setters
@@ -86,6 +81,11 @@ public class Cliente extends Pessoa {
 	 */
 	public void setStatusCli(boolean statusCli) {
 		this.statusCli = statusCli;
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [dtInscricao=" + dtInscricao + ", ultContato=" + ultContato + ", statusCli=" + statusCli + "]";
 	}
 
 }

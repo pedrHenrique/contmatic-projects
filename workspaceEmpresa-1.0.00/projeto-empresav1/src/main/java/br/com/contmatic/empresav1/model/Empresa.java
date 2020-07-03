@@ -69,7 +69,7 @@ public class Empresa {
 			if (obj.idEmpresa == removerId) {
 				System.out.println("A empresa encontrada foi: " + obj + ". Deseja remove-la? (s/n)");
 				String resposta = input.nextLine();
-
+				input.close();
 				if (resposta.equalsIgnoreCase("s")) {
 					iterator.remove();
 					System.out.println("A empresa foi removida com sucesso\n");
@@ -84,23 +84,18 @@ public class Empresa {
 				throw new IllegalArgumentException("A Empresa " + removerId + " não existe\n");
 			}
 		}
-		input.close();
+
 	}
 
 	public void listarEmpresas() {
 		empresaLista.forEach(System.out::println);
 	}
 
-	/**
-	 * @return the nome
-	 */
+	
 	public String getNome() {
 		return nome;
 	}
 
-	/**
-	 * @param nome the nome to set
-	 */
 	public void setNome(String nome) {
 		if (nome.length() >= 5) {
 			this.nome = nome;
@@ -126,8 +121,7 @@ public class Empresa {
 		if (cnpj.length() == 18) {
 			this.cnpj = cnpj;
 		} else {
-			throw new IllegalArgumentException(
-					"CNPJ precisa ter os 14 números mais a pontuação. Ex.: 00.000.000/0001-00!");
+			throw new IllegalArgumentException("CNPJ precisa ter os 14 números mais a pontuação. Ex.: 00.000.000/0001-00!");
 		}
 	}
 
