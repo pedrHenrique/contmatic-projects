@@ -85,91 +85,54 @@ public class Funcionario extends Pessoa {
 
 	// Getters and Setters
 
-	/**
-	 * Exemplos de Teste
-	 */
 	public String getTeste() {
 		return teste;
 	}
 
-	/**
-	 * Exemplos de Teste
-	 */
 	public void setTeste(String teste) {
 		if (teste == "") {
 			throw new IllegalArgumentException("Nome deve ter 5 ou mais caracteres!");
 		} else {
 			this.teste = teste;
 		}
-
 	}
 
-	/**
-	 * @return the dtAdmissao
-	 */
 	public DateFormat getDtAdmissao() {
 		return dtAdmissao;
 	}
 
-	/**
-	 * @param dtAdmissao the dtAdmissao to set
-	 */
 	public void setDtAdmissao(DateFormat dtAdmissao) {
 		this.dtAdmissao = dtAdmissao;
 	}
 
-	/**
-	 * @return the projeto
-	 */
 	public ProjetoFuncionario getProjeto() {
 		return projeto;
 	}
 
-	/**
-	 * @param projeto the projeto to set
-	 */
 	public void setProjeto(ProjetoFuncionario projeto) {
 		this.projeto = projeto;
 	}
-
-	/**
-	 * @return the departamento
-	 */
+	
 	public Departamento getDepartamento() {
 		return departamento;
 	}
 
-	/**
-	 * @param departamento the departamento to set
-	 */
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
 
-	/**
-	 * @return the salario
-	 */
 	public double getSalario() {
 		return salario;
 	}
 
-	/**
-	 * @param salario the salario to set
-	 */
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
 
-	/**
-	 * @return the statusFun
-	 */
 	public boolean isStatusFun() {
 		return statusFun;
 	}
-
-	/**
-	 * @param statusFun the statusFun to set
-	 */
+	
 	public void setStatusFun(boolean statusFun) {
 		this.statusFun = statusFun;
 	}
@@ -183,5 +146,4 @@ public class Funcionario extends Pessoa {
 		return "Pessoa: [idPessoa= " + getIdPessoa() + ", nome= " + getNome() + ", cpf= " + getCpf() + " [teste="
 				+ getTeste() + "]";
 	}
-
 }
