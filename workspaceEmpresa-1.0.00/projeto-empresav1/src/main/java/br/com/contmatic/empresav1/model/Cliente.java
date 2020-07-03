@@ -41,44 +41,26 @@ public class Cliente extends Pessoa {
 
 	// Getters and Setters
 
-	/**
-	 * @return the dtInscricao
-	 */
 	public DateFormat getDtInscricao() {
 		return dtInscricao;
 	}
 
-	/**
-	 * @param dtInscricao the dtInscricao to set
-	 */
 	public void setDtInscricao(DateFormat dtInscricao) {
 		this.dtInscricao = dtInscricao;
 	}
 
-	/**
-	 * @return the ultContato
-	 */
 	public DateFormat getUltContato() {
 		return ultContato;
 	}
 
-	/**
-	 * @param ultContato the ultContato to set
-	 */
 	public void setUltContato(DateFormat ultContato) {
 		this.ultContato = ultContato;
 	}
 
-	/**
-	 * @return the statusCli
-	 */
 	public boolean isStatusCli() {
 		return statusCli;
 	}
 
-	/**
-	 * @param statusCli the statusCli to set
-	 */
 	public void setStatusCli(boolean statusCli) {
 		this.statusCli = statusCli;
 	}
