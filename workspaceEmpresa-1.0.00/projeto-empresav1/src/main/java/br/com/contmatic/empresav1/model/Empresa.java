@@ -7,19 +7,13 @@ import java.util.Scanner;
 
 public class Empresa {
 
+	// Variáveis
 	private long idEmpresa;
-
 	private String nome;
-
 	private String cnpj;
-
 	private String endereco;
-
 	private String telefone; 
-
 	private static Collection<Empresa> empresaLista = new HashSet<Empresa>();
-
-	
 	
 	/*
 	 * Construtor utilizado para instanciar a classe empresa 
@@ -58,33 +52,36 @@ public class Empresa {
 		}
 	}
 
-	public void removerEmpresa(long removerId) {
-		// Instânciando Scanner e Iterator
+	public void removerEmpresa(long idRemover) {
+		
 		Scanner input = new Scanner(System.in);
 		Iterator<Empresa> iterator = empresaLista.iterator();
 
 		//Talvez seria necessário refatorar essa seção a baixo
 		while (iterator.hasNext()) {
 			Empresa obj = iterator.next();
-			if (obj.idEmpresa == removerId) {
+			if (obj.idEmpresa == idRemover) {
 				System.out.println("A empresa encontrada foi: " + obj + ". Deseja remove-la? (s/n)");
 				String resposta = input.nextLine();
 				input.close();
 				if (resposta.equalsIgnoreCase("s")) {
 					iterator.remove();
 					System.out.println("A empresa foi removida com sucesso\n");
-					listarEmpresas();
+					break;
 				} else {
-					System.out.println("Operação Abortada");
+					System.out.println("Operação Abortada\n");
 					break;
 				}
 
 			} // Refatorar no futuro
-			else if (iterator.hasNext() == false && obj.idEmpresa != removerId) {
-				throw new IllegalArgumentException("A Empresa " + removerId + " não existe\n");
+			else if (iterator.hasNext() == false && obj.idEmpresa != idRemover) {
+				extracted(idRemover);//Lança uma Exception
 			}
 		}
+	}
 
+	private void extracted(long idRemover) {
+		throw new IllegalArgumentException("A Empresa " + idRemover + " não existe\n");
 	}
 
 	public void listarEmpresas() {
@@ -107,10 +104,16 @@ public class Empresa {
 	
 	// Getters and Setters
 	
+	/**
+	 * @return the cnpj
+	 */
 	public String getCnpj() {
 		return cnpj;
 	}
 
+	/**
+	 * @param cnpj the cnpj to set
+	 */
 	public void setCnpj(String cnpj) {
 		if (cnpj.length() == 18) {
 			this.cnpj = cnpj;
@@ -119,30 +122,49 @@ public class Empresa {
 		}
 	}
 
+	/**
+	 * @return the endereco
+	 */
 	public String getEndereco() {
 		return endereco;
 	}
 
+	/**
+	 * @param endereco the endereco to set
+	 */
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
 
+	/**
+	 * @return the telefone
+	 */
 	public String getTelefone() {
 		return telefone;
 	}
 
+	/**
+	 * @param telefone the telefone to set
+	 */
 	public void setTelefone(String telefone) {
 		if (telefone.length() > 11 || telefone.length() < 20) {
 			this.telefone = telefone;
 		} else {
 			throw new IllegalArgumentException("O telefone está incorreto. Ex.: 011998420563");
 		}
+
 	}
 
+	/**
+	 * @return the idEmpresa
+	 */
 	public long getIdEmpresa() {
 		return idEmpresa;
 	}
 
+	/**
+	 * @param idEmpresa the idEmpresa to set
+	 */
 	public void setIdEmpresa(long idEmpresa) {
 		if (idEmpresa > 0) {
 			this.idEmpresa = idEmpresa;

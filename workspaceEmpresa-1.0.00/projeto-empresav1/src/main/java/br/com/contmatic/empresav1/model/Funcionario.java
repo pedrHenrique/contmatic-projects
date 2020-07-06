@@ -8,23 +8,21 @@ public class Funcionario extends Pessoa {
 
 	// Variáveis
 
-	private String teste;
-
+	private String email;
 	private DateFormat dtAdmissao;
-
-	private ProjetoFuncionario projeto;
-
 	private Departamento departamento;
-
 	private double salario;
-
 	private boolean statusFun;
+	// TODO private ProjetoFuncionario projeto; Furutamente ProjetoFuncionario
+	// poderá ser adicionado
 
 	// Construtores
 
-	public Funcionario(long idPessoa, String nome, String cpf, String teste/* , DateFormat dtNascimento */) {
-		super(idPessoa, nome, cpf/* , dtNascimento */);
-		setTeste(teste);
+	public Funcionario(long idPessoa, String nome, String cpf, String endereco, String telefone, String email, /* DateFormat dtadimissao, Departamento dep*/ double salario) {
+		super(idPessoa, nome, cpf, endereco, telefone);
+		setEmail(email);
+		setSalario(salario);
+		// setAtributo(atributo);
 	}
 
 	public Funcionario() {
@@ -40,15 +38,28 @@ public class Funcionario extends Pessoa {
 	}
 
 	@Override
-	public void cadastrarPessoa(long idPessoa, String nome, String cpf) {
-		System.out.println("#### Iniciando Cadastro de Funcionario ### \n");
-
+	public void cadastrarPessoa(long ID, String nome, String cpf, String endereco, String telefone, String email, double salario) {
+		System.out.print("#### Cadastrando Funcionario \n");
+		new Funcionario(ID, nome, cpf, endereco, telefone, email, salario);
+	}
+	
+	@Override
+	public void cadastrarPessoa(long idPessoa) {
+		System.out.print("#### Iniciando Cadastro de Funcionario ### \n");
 		Scanner input = new Scanner(System.in);
-		
-		System.out.println("Digite um nome p/ testar: ");
-		String resposta = input.nextLine();
-		setTeste(resposta);
-		new Funcionario(idPessoa, nome, cpf, getTeste());
+		System.out.print("Digite o nome: ");
+		setNome(input.nextLine());
+		System.out.print("\nDigite o CPF sem pontuação: ");
+		setCpf(input.nextLine());
+		System.out.print("\nDigite o endereço: ");
+		setEndereco(input.nextLine());
+		System.out.print("\nDigite o telefone: ");
+		setTelefone(input.nextLine());
+		System.out.print("\nDigite o Email: ");
+		setEmail(input.nextLine());
+		System.out.print("\nDigite o Salario: ");
+		setSalario(input.nextDouble());
+		new Funcionario(idPessoa, getNome(), getCpf(), getEndereco(), getTelefone(), getEmail(), getSalario());
 	}
 
 	@Override
@@ -61,12 +72,12 @@ public class Funcionario extends Pessoa {
 		while (iterator.hasNext()) {
 			Pessoa obj = iterator.next();
 			if (obj.getIdPessoa() == id) {
-				System.out.println("A empresa encontrada foi: " + obj + ". Deseja remove-la? (s/n)");
+				System.out.println("O Funcionario encontrado foi: " + obj + ". Deseja remove-la? (s/n)");
 				String resposta = input.nextLine();
 				input.close();
 				if (resposta.equalsIgnoreCase("s")) {
 					iterator.remove();
-					System.out.println("A empresa foi removida com sucesso\n");
+					System.out.println("O Funcionario foi removida com sucesso\n");
 					break;
 				} else {
 					System.out.println("Operação Abortada");
@@ -85,18 +96,6 @@ public class Funcionario extends Pessoa {
 
 	// Getters and Setters
 
-	public String getTeste() {
-		return teste;
-	}
-
-	public void setTeste(String teste) {
-		if (teste == "") {
-			throw new IllegalArgumentException("Nome deve ter 5 ou mais caracteres!");
-		} else {
-			this.teste = teste;
-		}
-	}
-
 	public DateFormat getDtAdmissao() {
 		return dtAdmissao;
 	}
@@ -105,14 +104,14 @@ public class Funcionario extends Pessoa {
 		this.dtAdmissao = dtAdmissao;
 	}
 
-	public ProjetoFuncionario getProjeto() {
-		return projeto;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setProjeto(ProjetoFuncionario projeto) {
-		this.projeto = projeto;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
+
 	public Departamento getDepartamento() {
 		return departamento;
 	}
@@ -132,18 +131,21 @@ public class Funcionario extends Pessoa {
 	public boolean isStatusFun() {
 		return statusFun;
 	}
-	
+
 	public void setStatusFun(boolean statusFun) {
 		this.statusFun = statusFun;
 	}
 
 	@Override
 	public String toString() {
-		// Exemplo de Concatenar
-		// String s = "Pessoa: [idPessoa= " + getIdPessoa() + ", nome= " + getNome() + "
-		// [teste=" + teste + "]" ;
-		// s += super.toString();
-		return "Pessoa: [idPessoa= " + getIdPessoa() + ", nome= " + getNome() + ", cpf= " + getCpf() + " [teste="
-				+ getTeste() + "]";
+		return "Funcionario: [ID= " + getIdPessoa() + ", Nome= " + getNome() + ", Cpf= " + getCpf() + " Endereço= "
+				+ getEndereco() + " Telefone=  " + getTelefone() + " Email= "
+						+ getEmail() + " Salario=  " + getSalario() +"]";
 	}
 }
+
+//public String toString() {
+// Exemplo de Concatenar
+// String s = "Pessoa: [idPessoa= " + getIdPessoa() + ", nome= " + getNome() + " [teste=" + teste + "]" ;
+// s += super.toString();
+// return s;

@@ -1,10 +1,7 @@
 package br.com.contmatic.empresav1.controller;
 
-import br.com.contmatic.empresav1.model.Cliente;
 import br.com.contmatic.empresav1.model.Departamento;
 import br.com.contmatic.empresav1.model.Empresa;
-import br.com.contmatic.empresav1.model.Projeto;
-import br.com.contmatic.empresav1.model.ProjetoFuncionario;
 import br.com.contmatic.empresav1.model.Funcionario;
 import br.com.contmatic.empresav1.model.Pessoa;
 
@@ -34,22 +31,29 @@ public class Principal {
 	
 	//Testando Polimorfismo das classes Pessoa/Cliente/Funcionario
 		
+	/*	
 		Pessoa p = new Funcionario();
-		p.cadastrarPessoa(1, "Carlos Alberto", "005.845.669.15");
-		p.cadastrarPessoa(2, "Rosivaldo", "125.842.612.52");
-		p.cadastrarPessoa(3, "Carlos Alberto", "005.845.669.15");
-		p.cadastrarPessoa(4, "Carlos Alberto", "005.845.669.15");
-		p.cadastrarPessoa(5, "Carlos Alberto", "005.845.669.15");
+		p.cadastrarPessoa(1);
+		//p.cadastrarPessoa(2);
+		//p.cadastrarPessoa(3);
+		//p.cadastrarPessoa(4);
+		//p.cadastrarPessoa(5);
 		p.solicitarPessoa();
 		
-		p.excluirPessoa(4);
 		//p.excluirPessoa(4);
+	*/
+	
 		
-		System.out.println("\n\n");
-		Pessoa j = new Funcionario();
-		j.solicitarPessoa();
-
+	/*	
+		Empresa emp = new Empresa();
+		emp.registrarEmpresa(4, "JuniorRobertinho", "60.449.385/0001-09", "Rua do São Sebastião 55", "20593218005");
+		emp.registrarEmpresa(5, "JuniorRobertinho", "60.449.385/0001-09", "Rua do São Sebastião 55", "20593218005");
+		emp.registrarEmpresa(6, "JuniorRobertinho", "60.449.385/0001-09", "Rua do São Sebastião 55", "20593218005");
+		emp.removerEmpresa(5);
+	*/
 		
+	Departamento d = new Departamento();
+	d.adicionarDep(1, "Jubliskeison", 125);
 	
 	}
 }
