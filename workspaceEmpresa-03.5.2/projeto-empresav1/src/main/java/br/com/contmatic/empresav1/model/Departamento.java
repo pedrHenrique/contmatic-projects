@@ -22,28 +22,32 @@ public class Departamento {
 	}
 
 	public Departamento() {
-		
+
 	}
-	
+
 	// Métodos
-	
+
 	public void listarDepartamentos() {
 		System.out.println("Lista Departamentos\n");
 		departamentoLista.forEach(System.out::println);
 	}
 
-	public void adicionarDep(long id) {
-		System.out.print("#### Iniciando Cadastro de Departamento ### \n");
+	public void adicionarDep() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("Digite o nome do Departamento: ");
-		setNome(input.nextLine());
+		System.out.print("Digite o número do Departamento: ");
+		setIdDepartamento(input.nextLong());
+		System.out.print("\nDigite o nome do Departamento: ");
+		setNome(input.next());
 		System.out.print("\nDigite o Ramal do Departamento: ");
 		setRamal(input.nextInt());
-		new Departamento(id, getNome(), getRamal());
+		adiciona(this);
 
 	}
 
 	public void adicionarDep(long id, String nome, int ramal) {
+		setIdDepartamento(id);
+		setNome(nome);
+		setRamal(ramal);
 		new Departamento(id, nome, ramal);
 	}
 
@@ -54,7 +58,7 @@ public class Departamento {
 			departamentoLista.add(departamento);
 		}
 	}
-	
+
 	public Departamento solicitarDep(long id) {
 		Iterator<Departamento> iterator = getDepartamentoLista().iterator();
 		while (iterator.hasNext()) {
@@ -69,10 +73,10 @@ public class Departamento {
 
 	}
 
-	public Departamento solicitarDep() { //Not able to run with multiples requests 
-		try (Scanner input = new Scanner(System.in)) {
+	public Departamento solicitarDep() { // Not able to run with multiples requests
+		try (Scanner user = new Scanner(System.in)) {
 			System.out.println("Insira o número do ID do Departamento");
-			long id = input.nextLong();
+			long id = user.nextLong();
 			Iterator<Departamento> iterator = getDepartamentoLista().iterator();
 			while (iterator.hasNext()) {
 				Departamento obj = iterator.next();
@@ -109,7 +113,6 @@ public class Departamento {
 
 	}
 
-
 	// Getters And Setters
 
 	public long getIdDepartamento() {
@@ -129,8 +132,8 @@ public class Departamento {
 	}
 
 	public void setNome(String nome) {
-		if (!(nome.length() < 5) && !(nome.isEmpty())) { //Se Nome ñ tiver um tam > que 5 e nome não estiver vazio
-			this.nome = nome;// adicione nome
+		if (!(nome.length() < 5) && !(nome.isEmpty())) {
+			this.nome = nome;
 		} else {
 			throw new IllegalArgumentException("Nome deve ter 5 ou mais caracteres!");
 		}
