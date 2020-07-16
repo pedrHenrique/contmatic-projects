@@ -24,3 +24,8 @@ Projeto empresav1 <p>
      -> Projeto já possui ToString(), equals e HashCode() funcionando e armazenando em um HashSet
      -> Todas as classes possuem função de cadastrar, remover, listar seus objetos. 
      -> Amanhã será feita uma revisão como também iniciado a fase de testes do projeto
+      
+     16/07/2020
+      -> Iniciação dos testes em JUnit
+      -> Principal classe de teste: Departamento
+      -> Métodos de criação de objetos testados até o momento 
